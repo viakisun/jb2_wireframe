@@ -39,6 +39,13 @@ npm install --omit=dev
 echo "🔨 프로덕션 빌드 중..."
 npm run build
 
+# 빌드 확인
+if [ ! -d ".next" ]; then
+    echo "❌ 빌드 실패: .next 디렉토리가 생성되지 않았습니다."
+    exit 1
+fi
+echo "✅ 빌드 완료: .next 디렉토리 확인됨"
+
 # 기존 프로세스 종료
 echo "🔄 기존 프로세스 정리 중..."
 pm2 stop jb-square-wireframe || true
