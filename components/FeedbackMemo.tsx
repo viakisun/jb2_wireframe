@@ -43,6 +43,11 @@ const FeedbackMemo: React.FC<FeedbackMemoProps> = ({ pagePath, pageTitle }) => {
     setMemos(updatedMemos);
     localStorage.setItem(`memos_${pagePath}`, JSON.stringify(updatedMemos));
     
+    // 실시간 알림을 위한 커스텀 이벤트 발생
+    window.dispatchEvent(new CustomEvent('newFeedback', { 
+      detail: { ...memo, pageTitle } 
+    }));
+    
     setNewMemo('');
     setAuthor('');
   };
