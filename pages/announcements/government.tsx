@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumb from '../../components/Breadcrumb';
+import FeedbackMemo from '../../components/FeedbackMemo';
 
 const GovernmentAnnouncementsPage = () => {
   const breadcrumbItems = [
@@ -271,6 +272,9 @@ const GovernmentAnnouncementsPage = () => {
 
         </div>
       </main>
+
+      {/* 피드백 메모 섹션 */}
+      <FeedbackMemo pagePath="/announcements/government" pageTitle="정부/지자체 공고" />
 
       <Footer />
     </div>

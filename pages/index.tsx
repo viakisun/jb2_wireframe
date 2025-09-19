@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import FeedbackMemo from '../components/FeedbackMemo';
 
 const HomePage = () => {
   return (
@@ -278,6 +279,9 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      {/* 피드백 메모 섹션 */}
+      <FeedbackMemo pagePath="/" pageTitle="홈페이지" />
 
       <Footer />
     </div>

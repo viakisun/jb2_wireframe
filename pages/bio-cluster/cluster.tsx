@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Breadcrumb from '../../components/Breadcrumb';
+import FeedbackMemo from '../../components/FeedbackMemo';
 
 const BioClusterPage = () => {
   const breadcrumbItems = [
@@ -228,6 +229,9 @@ const BioClusterPage = () => {
 
         </div>
       </main>
+
+      {/* 피드백 메모 섹션 */}
+      <FeedbackMemo pagePath="/bio-cluster/cluster" pageTitle="바이오 클러스터" />
 
       <Footer />
     </div>
