@@ -124,7 +124,7 @@ const Header = () => {
                         className="absolute top-full left-0 w-64 bg-white border-2 border-gray-400 z-50"
                         style={{
                           display: activeDropdown === index ? 'block' : 'none',
-                          marginTop: '2px'
+                          top: '100%'
                         }}
                         onMouseEnter={() => setActiveDropdown(index)}
                         onMouseLeave={() => setActiveDropdown(null)}
