@@ -50,17 +50,15 @@ http://localhost:3000
 
 ### 배포 방법
 ```bash
-# 1. 프로덕션 빌드
-npm run build
-
-# 2. EC2에 파일 업로드 (SCP 사용)
-scp -i ~/.ssh/your-key.pem -r . ec2-user@your-ec2-host:/home/ec2-user/jb2_wireframe/
-
-# 3. EC2에서 설정 스크립트 실행
+# 1. EC2에 접속
 ssh -i ~/.ssh/your-key.pem ec2-user@your-ec2-host
+
+# 2. 프로젝트 디렉토리로 이동
 cd /home/ec2-user/jb2_wireframe
-chmod +x ec2-setup.sh
-./ec2-setup.sh
+
+# 3. 배포 스크립트 실행
+chmod +x deploy.sh
+./deploy.sh
 
 # 4. 애플리케이션 접속
 # http://your-ec2-public-ip (포트 80)
