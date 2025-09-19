@@ -61,8 +61,9 @@ chmod +x deploy.sh
 ./deploy.sh
 
 # 4. 애플리케이션 접속
-# http://your-ec2-public-ip (포트 80)
-# 또는 http://your-ec2-public-ip:3100 (직접 접속)
+# 도메인: http://jb2.viahub.dev
+# IP 직접: http://your-ec2-public-ip
+# 헬스체크: http://jb2.viahub.dev/healthz
 ```
 
 ### 배포 후 관리
