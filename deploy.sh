@@ -75,8 +75,9 @@ server {
 }
 
 server {
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
     server_name jb2.viahub.dev;
 
     # SSL 인증서 설정
@@ -134,16 +135,19 @@ fi
 sudo systemctl reload nginx
 
 # 방화벽 설정 (포트 80, 443, 3100 열기)
-sudo firewall-cmd --permanent --add-port=80/tcp
-sudo firewall-cmd --permanent --add-port=443/tcp
-sudo firewall-cmd --permanent --add-port=3100/tcp
-sudo firewall-cmd --reload
+# Amazon Linux에서는 iptables 사용
+sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 443 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 3100 -j ACCEPT
+
+# 방화벽 규칙 저장 (Amazon Linux)
+sudo service iptables save 2>/dev/null || true
 
 # 상태 확인
 echo "✅ 배포 완료!"
 
 # 퍼블릭 IP 확인
-PUBLIC_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
+PUBLIC_IP=$(curl -s --connect-timeout 5 http://169.254.169.254/latest/meta-data/public-ipv4 2>/dev/null || echo "확인 불가")
 echo "🌐 퍼블릭 IP: $PUBLIC_IP"
 
 # 로컬 검증
