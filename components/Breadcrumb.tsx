@@ -21,7 +21,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
               ) : (
                 <span className="text-gray-800 font-medium">{item.label}</span>
               )}
-              {index < items.length - 1 && <span className="mx-2 text-gray-400">></span>}
+              {index < items.length - 1 && <span className="mx-2 text-gray-400">&gt;</span>}
             </span>
           ))}
         </div>

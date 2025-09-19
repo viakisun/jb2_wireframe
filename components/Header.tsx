@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 const Header = () => {
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileSubMenuOpen, setMobileSubMenuOpen] = useState({});
+  const [mobileSubMenuOpen, setMobileSubMenuOpen] = useState<{[key: number]: boolean}>({});
 
   // 화면 크기 변경시 모바일 메뉴 닫기
   useEffect(() => {
@@ -84,7 +84,7 @@ const Header = () => {
     }
   ];
 
-  const toggleMobileSubMenu = (index) => {
+  const toggleMobileSubMenu = (index: number) => {
     setMobileSubMenuOpen(prev => ({
       ...prev,
       [index]: !prev[index]
