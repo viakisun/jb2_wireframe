@@ -65,37 +65,55 @@ echo "🌐 Nginx 설정 중..."
 # 기존 와일드카드 설정 백업
 sudo mv /etc/nginx/conf.d/jb-square-wireframe.conf /etc/nginx/conf.d/jb-square-wireframe.conf.bak 2>/dev/null || true
 
-# jb2.viahub.dev 도메인 설정
-sudo tee /etc/nginx/conf.d/jb2.conf << 'EOF'
+# jb2.viahub.dev 도메인 설정 (SSL 포함)
+sudo tee /etc/nginx/conf.d/00-jb2.conf << 'EOF'
 server {
     listen 80;
+    listen [::]:80;
+    server_name jb2.viahub.dev;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
     server_name jb2.viahub.dev;
 
+    # SSL 인증서 설정
+    ssl_certificate     /etc/letsencrypt/live/viahub.dev/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/viahub.dev/privkey.pem;
+
+    # SSL 최적화
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384;
+    ssl_prefer_server_ciphers off;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+
+    # 버퍼 설정
+    proxy_buffer_size       128k;
+    proxy_buffers           4 256k;
+    proxy_busy_buffers_size 256k;
+
+    # 헬스체크 엔드포인트
+    location = /healthz { 
+        return 200 "OK"; 
+        add_header Content-Type text/plain;
+    }
+
+    # 메인 애플리케이션
     location / {
         proxy_pass http://127.0.0.1:3100;
-
-        # 기본 프록시 헤더
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-
-        # WebSocket/SSR 대응
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-
-        # 타임아웃/버퍼 (Next 정적 리소스 대비)
-        proxy_read_timeout 120s;
-        proxy_send_timeout 120s;
-        proxy_buffering on;
-        proxy_buffers 32 64k;
-        proxy_busy_buffers_size 256k;
-    }
-
-    # 헬스체크용 간단 엔드포인트
-    location = /healthz { 
-        return 200; 
+        proxy_cache_bypass $http_upgrade;
+        proxy_read_timeout 60s;
+        proxy_send_timeout 60s;
     }
 }
 EOF
@@ -115,8 +133,9 @@ fi
 # Nginx 재시작
 sudo systemctl reload nginx
 
-# 방화벽 설정 (포트 80, 3100 열기)
+# 방화벽 설정 (포트 80, 443, 3100 열기)
 sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --permanent --add-port=443/tcp
 sudo firewall-cmd --permanent --add-port=3100/tcp
 sudo firewall-cmd --reload
 
@@ -132,11 +151,14 @@ echo "🔍 로컬 검증 중..."
 echo "1. 백엔드 직접 접속 테스트:"
 curl -I http://127.0.0.1:3100 2>/dev/null | head -1 || echo "❌ 백엔드 접속 실패"
 
-echo "2. Nginx 프록시 테스트:"
-curl -I http://localhost 2>/dev/null | head -1 || echo "❌ Nginx 프록시 실패"
+echo "2. HTTP → HTTPS 리다이렉트 테스트:"
+curl -I http://localhost 2>/dev/null | head -1 || echo "❌ HTTP 리다이렉트 실패"
 
-echo "3. 헬스체크 테스트:"
-curl -I http://localhost/healthz 2>/dev/null | head -1 || echo "❌ 헬스체크 실패"
+echo "3. HTTPS 프록시 테스트:"
+curl -I -k https://localhost 2>/dev/null | head -1 || echo "❌ HTTPS 프록시 실패"
+
+echo "4. 헬스체크 테스트:"
+curl -I -k https://localhost/healthz 2>/dev/null | head -1 || echo "❌ 헬스체크 실패"
 
 # PM2 상태
 echo "📊 PM2 상태:"
@@ -145,9 +167,9 @@ pm2 status
 # 접속 정보
 echo ""
 echo "🎯 접속 정보:"
-echo "   도메인: http://jb2.viahub.dev"
-echo "   IP 직접: http://$PUBLIC_IP"
-echo "   헬스체크: http://jb2.viahub.dev/healthz"
+echo "   도메인: https://jb2.viahub.dev"
+echo "   IP 직접: https://$PUBLIC_IP"
+echo "   헬스체크: https://jb2.viahub.dev/healthz"
 echo ""
 echo "📝 관리 명령어:"
 echo "   로그 확인: pm2 logs jb-square-wireframe"
