@@ -62,3 +62,4 @@ const VacancyPage = () => {
 };
 
 export default VacancyPage;
+

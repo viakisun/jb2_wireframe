@@ -431,3 +431,4 @@ const ForeignInvestmentPage = () => {
 };
 
 export default ForeignInvestmentPage;
+

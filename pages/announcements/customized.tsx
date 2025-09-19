@@ -48,3 +48,4 @@ const CustomizedPage = () => {
 };
 
 export default CustomizedPage;
+

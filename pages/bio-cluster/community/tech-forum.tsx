@@ -486,3 +486,4 @@ const TechForumPage = () => {
 };
 
 export default TechForumPage;
+

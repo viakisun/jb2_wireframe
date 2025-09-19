@@ -424,3 +424,4 @@ const PharmaSalonPage = () => {
 };
 
 export default PharmaSalonPage;
+

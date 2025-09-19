@@ -406,3 +406,4 @@ const AcademicPage = () => {
 };
 
 export default AcademicPage;
+

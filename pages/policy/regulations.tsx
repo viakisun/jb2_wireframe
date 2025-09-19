@@ -51,3 +51,4 @@ const RegulationsPage = () => {
 };
 
 export default RegulationsPage;
+

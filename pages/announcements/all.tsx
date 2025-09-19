@@ -42,3 +42,4 @@ const AllAnnouncementsPage = () => {
 };
 
 export default AllAnnouncementsPage;
+

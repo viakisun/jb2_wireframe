@@ -60,3 +60,4 @@ const GraduatePage = () => {
 };
 
 export default GraduatePage;
+

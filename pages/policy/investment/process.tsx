@@ -222,3 +222,4 @@ const InvestmentProcessPage = () => {
 };
 
 export default InvestmentProcessPage;
+
