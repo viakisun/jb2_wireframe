@@ -26,9 +26,14 @@ sudo yum install -y nginx
 echo "🔧 PM2 설치 중..."
 sudo npm install -g pm2
 
-# 의존성 설치
+# 기존 node_modules 정리
+echo "🧹 기존 파일 정리 중..."
+rm -rf node_modules
+npm cache clean --force
+
+# 의존성 설치 (개발 의존성 제외)
 echo "📦 의존성 설치 중..."
-npm install --production
+npm install --omit=dev
 
 # 프로덕션 빌드
 echo "🔨 프로덕션 빌드 중..."
