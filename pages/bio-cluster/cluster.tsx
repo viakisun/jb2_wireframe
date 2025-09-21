@@ -148,7 +148,12 @@ const BioClusterPage = () => {
             {/* 기업 정보 테이블 */}
             <div className="border-2 border-gray-400 p-6 bg-gray-50">
               <h3 className="text-xl font-semibold mb-4 text-gray-800">[SUBSECTION] 주요 입주기업</h3>
-              <div className="overflow-x-auto">
+              
+              {/* 데스크톱 테이블 뷰 */}
+              <div className="hidden md:block overflow-x-auto">
+                <div className="bg-green-100 p-2 text-green-800 text-sm mb-4 rounded">
+                  💻 데스크톱 뷰가 활성화되었습니다 (화면 크기: 768px 이상)
+                </div>
                 <table className="w-full border border-gray-300">
                   <thead className="bg-gray-200">
                     <tr>
@@ -165,24 +170,114 @@ const BioClusterPage = () => {
                       <td className="border border-gray-300 p-3">[TD] 서정진</td>
                       <td className="border border-gray-300 p-3">[TD] 바이오시밀러</td>
                       <td className="border border-gray-300 p-3">[TD] A동 101호</td>
-                      <td className="border border-gray-300 p-3">[LINK] www.celltrion.com</td>
+                      <td className="border border-gray-300 p-3">
+                        <a href="http://www.celltrion.com" className="text-blue-600 hover:text-blue-800 underline">
+                          www.celltrion.com
+                        </a>
+                      </td>
                     </tr>
                     <tr>
                       <td className="border border-gray-300 p-3">[TD] 진바이오텍</td>
                       <td className="border border-gray-300 p-3">[TD] 김○○</td>
                       <td className="border border-gray-300 p-3">[TD] 진단기기</td>
                       <td className="border border-gray-300 p-3">[TD] B동 205호</td>
-                      <td className="border border-gray-300 p-3">[LINK] www.jinbiotech.com</td>
+                      <td className="border border-gray-300 p-3">
+                        <a href="http://www.jinbiotech.com" className="text-blue-600 hover:text-blue-800 underline">
+                          www.jinbiotech.com
+                        </a>
+                      </td>
                     </tr>
                     <tr>
                       <td className="border border-gray-300 p-3">[TD] 바이오젠텍</td>
                       <td className="border border-gray-300 p-3">[TD] 이○○</td>
                       <td className="border border-gray-300 p-3">[TD] 바이오의약품</td>
                       <td className="border border-gray-300 p-3">[TD] C동 301호</td>
-                      <td className="border border-gray-300 p-3">[LINK] www.biogentech.com</td>
+                      <td className="border border-gray-300 p-3">
+                        <a href="http://www.biogentech.com" className="text-blue-600 hover:text-blue-800 underline">
+                          www.biogentech.com
+                        </a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
+              </div>
+
+              {/* 모바일 카드 뷰 */}
+              <div className="md:hidden space-y-4">
+                <div className="bg-red-100 p-2 text-red-800 text-sm mb-4 rounded">
+                  📱 모바일 뷰가 활성화되었습니다 (화면 크기: 768px 미만)
+                </div>
+                {/* 셀트리온 카드 */}
+                <div className="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
+                  <div className="flex justify-between items-start mb-3">
+                    <h4 className="text-lg font-semibold text-gray-800">[TD] 셀트리온</h4>
+                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">[TD] A동 101호</span>
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 font-medium">대표자:</span>
+                      <span className="text-gray-800">[TD] 서정진</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 font-medium">생산품:</span>
+                      <span className="text-gray-800">[TD] 바이오시밀러</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-600 font-medium">홈페이지:</span>
+                      <a href="http://www.celltrion.com" className="text-blue-600 hover:text-blue-800 underline text-xs">
+                        www.celltrion.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 진바이오텍 카드 */}
+                <div className="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
+                  <div className="flex justify-between items-start mb-3">
+                    <h4 className="text-lg font-semibold text-gray-800">[TD] 진바이오텍</h4>
+                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">[TD] B동 205호</span>
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 font-medium">대표자:</span>
+                      <span className="text-gray-800">[TD] 김○○</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 font-medium">생산품:</span>
+                      <span className="text-gray-800">[TD] 진단기기</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-600 font-medium">홈페이지:</span>
+                      <a href="http://www.jinbiotech.com" className="text-blue-600 hover:text-blue-800 underline text-xs">
+                        www.jinbiotech.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 바이오젠텍 카드 */}
+                <div className="bg-white border border-gray-300 rounded-lg p-4 shadow-sm">
+                  <div className="flex justify-between items-start mb-3">
+                    <h4 className="text-lg font-semibold text-gray-800">[TD] 바이오젠텍</h4>
+                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">[TD] C동 301호</span>
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 font-medium">대표자:</span>
+                      <span className="text-gray-800">[TD] 이○○</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600 font-medium">생산품:</span>
+                      <span className="text-gray-800">[TD] 바이오의약품</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-600 font-medium">홈페이지:</span>
+                      <a href="http://www.biogentech.com" className="text-blue-600 hover:text-blue-800 underline text-xs">
+                        www.biogentech.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
