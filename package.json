@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 3100",
-    "start:prod": "NODE_ENV=production next start -p 3100",
+    "start": "next start -p 3300",
+    "start:prod": "NODE_ENV=production next start -p 3300",
     "lint": "next lint"
   },
   "dependencies": {

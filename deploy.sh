@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # JB SQUARE 와이어프레임 EC2 배포 스크립트
-# 포트: 3100
+# 포트: 3300
 # EC2에서 직접 실행하는 스크립트
 
 echo "🚀 JB SQUARE 와이어프레임 EC2 배포 시작..."
@@ -48,12 +48,12 @@ echo "✅ 빌드 완료: .next 디렉토리 확인됨"
 
 # 기존 프로세스 종료
 echo "🔄 기존 프로세스 정리 중..."
-pm2 stop jb-square-wireframe || true
-pm2 delete jb-square-wireframe || true
+pm2 stop jb-square-rev2 || true
+pm2 delete jb-square-rev2 || true
 
 # PM2로 애플리케이션 시작
 echo "🚀 애플리케이션 시작 중..."
-pm2 start npm --name "jb-square-wireframe" -- run start:prod
+pm2 start npm --name "jb-square-rev2" -- run start:prod
 
 # PM2 자동 시작 설정
 pm2 startup
@@ -65,19 +65,19 @@ echo "🌐 Nginx 설정 중..."
 # 기존 와일드카드 설정 백업
 sudo mv /etc/nginx/conf.d/jb-square-wireframe.conf /etc/nginx/conf.d/jb-square-wireframe.conf.bak 2>/dev/null || true
 
-# jb2.viahub.dev 도메인 설정 (SSL 포함)
-sudo tee /etc/nginx/conf.d/00-jb2.conf << 'EOF'
+# jb2rev2.viahub.dev 도메인 설정 (SSL 포함)
+sudo tee /etc/nginx/conf.d/00-jb2rev2.conf << 'EOF'
 server {
     listen 80;
     listen [::]:80;
-    server_name jb2.viahub.dev;
+    server_name jb2rev2.viahub.dev;
     return 301 https://$host$request_uri;
 }
 
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
-    server_name jb2.viahub.dev;
+    server_name jb2rev2.viahub.dev;
 
     # SSL 인증서 설정
     ssl_certificate     /etc/letsencrypt/live/viahub.dev/fullchain.pem;
@@ -103,7 +103,7 @@ server {
 
     # 메인 애플리케이션
     location / {
-        proxy_pass http://127.0.0.1:3100;
+        proxy_pass http://127.0.0.1:3300;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
@@ -133,10 +133,10 @@ fi
 # Nginx 재시작
 sudo systemctl reload nginx
 
-# 방화벽 설정 (포트 80, 443, 3100 열기)
+# 방화벽 설정 (포트 80, 443, 3300 열기)
 sudo firewall-cmd --permanent --add-port=80/tcp
 sudo firewall-cmd --permanent --add-port=443/tcp
-sudo firewall-cmd --permanent --add-port=3100/tcp
+sudo firewall-cmd --permanent --add-port=3300/tcp
 sudo firewall-cmd --reload
 
 # 상태 확인
@@ -149,7 +149,7 @@ echo "🌐 퍼블릭 IP: $PUBLIC_IP"
 # 로컬 검증
 echo "🔍 로컬 검증 중..."
 echo "1. 백엔드 직접 접속 테스트:"
-curl -I http://127.0.0.1:3100 2>/dev/null | head -1 || echo "❌ 백엔드 접속 실패"
+curl -I http://127.0.0.1:3300 2>/dev/null | head -1 || echo "❌ 백엔드 접속 실패"
 
 echo "2. HTTP → HTTPS 리다이렉트 테스트:"
 curl -I http://localhost 2>/dev/null | head -1 || echo "❌ HTTP 리다이렉트 실패"
@@ -167,11 +167,11 @@ pm2 status
 # 접속 정보
 echo ""
 echo "🎯 접속 정보:"
-echo "   도메인: https://jb2.viahub.dev"
+echo "   도메인: https://jb2rev2.viahub.dev"
 echo "   IP 직접: https://$PUBLIC_IP"
-echo "   헬스체크: https://jb2.viahub.dev/healthz"
+echo "   헬스체크: https://jb2rev2.viahub.dev/healthz"
 echo ""
 echo "📝 관리 명령어:"
-echo "   로그 확인: pm2 logs jb-square-wireframe"
-echo "   재시작: pm2 restart jb-square-wireframe"
+echo "   로그 확인: pm2 logs jb-square-rev2"
+echo "   재시작: pm2 restart jb-square-rev2"
 echo "   Nginx 로그: sudo tail -f /var/log/nginx/error.log"
