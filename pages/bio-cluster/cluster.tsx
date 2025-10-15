@@ -165,21 +165,33 @@ const BioClusterPage = () => {
                       <td className="border border-gray-300 p-3">[TD] 서정진</td>
                       <td className="border border-gray-300 p-3">[TD] 바이오시밀러</td>
                       <td className="border border-gray-300 p-3">[TD] A동 101호</td>
-                      <td className="border border-gray-300 p-3">[LINK] www.celltrion.com</td>
+                      <td className="border border-gray-300 p-3">
+                        <a href="http://www.celltrion.com" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">
+                          www.celltrion.com
+                        </a>
+                      </td>
                     </tr>
                     <tr>
                       <td className="border border-gray-300 p-3">[TD] 진바이오텍</td>
                       <td className="border border-gray-300 p-3">[TD] 김○○</td>
                       <td className="border border-gray-300 p-3">[TD] 진단기기</td>
                       <td className="border border-gray-300 p-3">[TD] B동 205호</td>
-                      <td className="border border-gray-300 p-3">[LINK] www.jinbiotech.com</td>
+                      <td className="border border-gray-300 p-3">
+                        <a href="http://www.jinbiotech.com" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">
+                          www.jinbiotech.com
+                        </a>
+                      </td>
                     </tr>
                     <tr>
                       <td className="border border-gray-300 p-3">[TD] 바이오젠텍</td>
                       <td className="border border-gray-300 p-3">[TD] 이○○</td>
                       <td className="border border-gray-300 p-3">[TD] 바이오의약품</td>
                       <td className="border border-gray-300 p-3">[TD] C동 301호</td>
-                      <td className="border border-gray-300 p-3">[LINK] www.biogentech.com</td>
+                      <td className="border border-gray-300 p-3">
+                        <a href="http://www.biogentech.com" className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">
+                          www.biogentech.com
+                        </a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
