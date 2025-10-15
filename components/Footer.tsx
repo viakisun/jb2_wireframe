@@ -16,9 +16,9 @@ const Footer = () => {
   return (
     <footer className="bg-slate-950 border-t border-slate-800">
       <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
+        <div className="flex flex-col lg:flex-row lg:gap-4">
           {/* Brand Section */}
-          <div className="lg:col-span-1">
+          <div className="flex-[2]">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                 <span className="text-white text-lg font-bold">JB²</span>
@@ -72,8 +72,11 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* 공백 */}
+          <div className="hidden lg:block flex-1"></div>
+          
           {/* 주요 서비스 */}
-          <div>
+          <div className="flex-1">
             <h4 className="font-semibold mb-6 text-white text-sm">주요 서비스</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
               <li>
@@ -104,8 +107,11 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* 공백 */}
+          <div className="hidden lg:block flex-[0.5]"></div>
+
           {/* 정책 & 제도 */}
-          <div>
+          <div className="flex-1">
             <h4 className="font-semibold mb-6 text-white text-sm">정책 & 제도</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
               <li>
@@ -136,8 +142,11 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* 공백 */}
+          <div className="hidden lg:block flex-[0.5]"></div>
+          
           {/* 연락처 정보 */}
-          <div>
+          <div className="flex-1">
             <h4 className="font-semibold mb-6 text-white text-sm">연락처</h4>
             <div className="text-gray-400 text-sm space-y-4">
               <div>

@@ -107,11 +107,11 @@ const Header = () => {
       {/* Header */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/98 backdrop-blur-xl shadow-lg border-b border-gray-200 py-3.5' 
+          ? 'bg-slate-950/95 backdrop-blur-xl shadow-lg border-b border-slate-800 py-3.5' 
           : 'bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/50 py-5'
       }`}>
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-center px-4">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex justify-between items-center">
             {/* Logo */}
             <div className="flex items-center">
               <a href="/" className={`transition-all duration-300 ${
@@ -133,38 +133,30 @@ const Header = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:block flex-1 max-w-6xl mx-4">
+            <div className="hidden lg:block flex-1">
               <nav className="flex justify-center">
-                <div className="flex space-x-6 xl:space-x-8">
+                <div className="flex space-x-2 xl:space-x-4">
                   {menuItems.map((menu, index) => (
                     <div key={index} className="relative">
                       <div
                         onMouseEnter={() => setActiveDropdown(index)}
                         onMouseLeave={() => setActiveDropdown(null)}
                       >
-                        <button className={`px-4 xl:px-5 py-3.5 text-base font-semibold tracking-wide transition-all duration-300 rounded-lg whitespace-nowrap relative ${
+                        <button className={`px-2 xl:px-3 py-3 text-sm xl:text-sm font-medium transition-all duration-300 rounded-lg whitespace-nowrap relative ${
                           isScrolled 
                             ? (activeDropdown === index 
-                                ? 'text-blue-600 bg-blue-50' 
-                                : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50')
+                                ? 'text-blue-400 bg-white/10' 
+                                : 'text-white/90 hover:text-white hover:bg-white/10 drop-shadow-sm')
                             : (activeDropdown === index 
-                                ? 'text-white bg-white/15' 
-                                : 'text-white hover:text-white hover:bg-white/10 drop-shadow-sm')
-                        } ${
-                          activeDropdown === index && !isScrolled 
-                            ? 'after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-cyan-400 after:rounded-full' 
-                            : ''
-                        } ${
-                          activeDropdown === index && isScrolled 
-                            ? 'after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-blue-600 after:rounded-full' 
-                            : ''
+                                ? 'text-orange-300 bg-white/10' 
+                                : 'text-white/90 hover:text-white hover:bg-white/10 drop-shadow-md')
                         }`}>
                           {menu.title}
                         </button>
                         
                         {/* Enhanced Desktop Dropdown */}
                         <div
-                          className={`absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-2xl border border-gray-100 z-50 transition-all duration-300 ${
+                          className={`absolute top-full left-0 mt-2 w-72 bg-slate-800 rounded-xl shadow-2xl border border-slate-700 z-50 transition-all duration-300 ${
                             activeDropdown === index 
                               ? 'opacity-100 visible translate-y-0 scale-100' 
                               : 'opacity-0 invisible translate-y-2 scale-95'
@@ -177,9 +169,9 @@ const Header = () => {
                               <a
                                 key={subIndex}
                                 href={subItem.href}
-                                className="group flex items-center gap-3 px-5 py-3 text-[15px] font-medium text-gray-700 hover:bg-blue-600 hover:text-white rounded-lg transition-all duration-200"
+                                className="flex items-center gap-2 px-4 py-3 text-sm text-gray-300 hover:bg-blue-600 hover:text-white rounded-lg transition-colors"
                               >
-                                <div className="w-2 h-2 bg-gray-300 group-hover:bg-white rounded-full transition-colors"></div>
+                                <div className="w-2 h-2 bg-gray-500 group-hover:bg-white rounded-full transition-colors"></div>
                                 {subItem.name}
                               </a>
                             ))}
@@ -198,10 +190,10 @@ const Header = () => {
               <div className="relative">
                 <button className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ${
                   isScrolled 
-                    ? 'bg-gray-100 hover:bg-gray-200 border border-gray-200' 
+                    ? 'bg-white/20 hover:bg-white/30 border border-white/30 backdrop-blur-sm' 
                     : 'bg-white/20 hover:bg-white/30 border border-white/30 backdrop-blur-sm'
                 }`}>
-                  <svg className={`w-5 h-5 ${isScrolled ? 'text-gray-600' : 'text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </button>
@@ -212,7 +204,7 @@ const Header = () => {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className={`lg:hidden p-2 rounded-lg transition-all duration-200 ${
                   isScrolled 
-                    ? 'text-gray-700 hover:text-blue-600 hover:bg-gray-50' 
+                    ? 'text-white/90 hover:text-blue-400 hover:bg-white/10 drop-shadow-sm' 
                     : 'text-white hover:text-orange-300 hover:bg-white/10 drop-shadow-md'
                 }`}
               >
@@ -236,13 +228,13 @@ const Header = () => {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="lg:hidden bg-white/95 backdrop-blur-md shadow-xl border-t border-gray-200">
+            <div className="lg:hidden bg-slate-800/95 backdrop-blur-md shadow-xl border-t border-slate-700">
               <div className="px-4 py-6 space-y-2 max-h-96 overflow-y-auto">
                 {menuItems.map((menu, index) => (
                   <div key={index}>
                     <button
                       onClick={() => toggleMobileSubMenu(index)}
-                      className="w-full flex justify-between items-center py-4 px-4 text-left text-gray-700 hover:bg-blue-50 rounded-xl transition-all duration-200 group"
+                      className="w-full flex justify-between items-center py-4 px-4 text-left text-gray-300 hover:bg-white/10 rounded-xl transition-all duration-200 group"
                     >
                       <span className="font-medium group-hover:text-blue-600">{menu.title}</span>
                       <span className={`transform transition-transform duration-200 text-blue-500 ${mobileSubMenuOpen[index] ? 'rotate-180' : ''}`}>
@@ -258,7 +250,7 @@ const Header = () => {
                           <a
                             key={subIndex}
                             href={subItem.href}
-                            className="flex items-center gap-3 py-3 px-4 text-sm text-gray-600 hover:bg-primary-blue hover:text-white rounded-lg transition-all duration-200"
+                            className="flex items-center gap-3 py-3 px-4 text-sm text-gray-400 hover:bg-blue-600 hover:text-white rounded-lg transition-all duration-200"
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
@@ -271,11 +263,11 @@ const Header = () => {
                 ))}
                 
                 {/* Mobile Actions */}
-                <div className="pt-6 mt-6 border-t border-gray-200 space-y-4">
+                <div className="pt-6 mt-6 border-t border-slate-700 space-y-4">
                   {/* Mobile User Avatar */}
-                  <button className="w-full flex items-center gap-3 px-4 py-3 text-left text-gray-700 hover:bg-gray-50 rounded-xl transition-all duration-200">
-                    <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <button className="w-full flex items-center gap-3 px-4 py-3 text-left text-gray-300 hover:bg-white/10 rounded-xl transition-all duration-200">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>

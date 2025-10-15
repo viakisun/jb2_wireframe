@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import FeedbackMemo from '../components/FeedbackMemo';
 import HeroSearch from '../components/HeroSearch';
 import { mockAnnouncements, mockIncubatorCenters, mockCompanies } from '../store/mockupStore';
 
@@ -558,8 +557,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 피드백 메모 섹션 */}
-      <FeedbackMemo pagePath="/" pageTitle="홈페이지" />
 
       <Footer />
     </div>
