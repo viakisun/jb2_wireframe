@@ -557,6 +557,77 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* 회원 혜택 섹션 */}
+      <section className="bg-slate-950 py-16 px-4">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="mb-8 lg:mb-12">
+            <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2">회원 혜택</h2>
+            <p className="text-gray-400">JB SQUARE 회원만의 특별한 혜택</p>
+          </div>
+
+          {/* 혜택 카드 그리드 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {/* 우선 지원 알림 */}
+            <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 hover:border-blue-500 transition-all duration-300 hover:shadow-lg">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                </div>
+                <h3 className="text-white font-semibold mb-2">우선 지원 알림</h3>
+                <p className="text-gray-400 text-sm">신규 지원사업 공고 우선 알림</p>
+              </div>
+            </div>
+
+            {/* 맞춤형 정보 */}
+            <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 hover:border-blue-500 transition-all duration-300 hover:shadow-lg">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <h3 className="text-white font-semibold mb-2">맞춤형 정보</h3>
+                <p className="text-gray-400 text-sm">기업 유형별 맞춤 정보 제공</p>
+              </div>
+            </div>
+
+            {/* 네트워킹 기회 */}
+            <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 hover:border-blue-500 transition-all duration-300 hover:shadow-lg">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-white font-semibold mb-2">네트워킹 기회</h3>
+                <p className="text-gray-400 text-sm">바이오 커뮤니티 행사 초대</p>
+              </div>
+            </div>
+
+            {/* 전문가 상담 */}
+            <div className="bg-slate-900 border border-slate-700 rounded-2xl p-6 hover:border-blue-500 transition-all duration-300 hover:shadow-lg">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                </div>
+                <h3 className="text-white font-semibold mb-2">전문가 상담</h3>
+                <p className="text-gray-400 text-sm">창업/투자 전문가 1:1 상담</p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA 버튼 */}
+          <div className="text-center">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 text-lg rounded-xl transition-all duration-300 shadow-lg">
+              회원가입하고 혜택 받기
+            </button>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>
