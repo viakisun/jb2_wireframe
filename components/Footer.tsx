@@ -18,20 +18,17 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="flex flex-col lg:flex-row lg:gap-4">
           {/* Brand Section */}
-          <div className="flex-[2]">
+          <div className="flex-[2]" style={{ marginBottom: '48px' }}>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                 <span className="text-white text-lg font-bold">JB²</span>
               </div>
               <h3 className="text-xl font-bold text-white">JB SQUARE</h3>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              전북 바이오 생태계의 혁신 허브로 글로벌 바이오 기업들의 성장을 지원합니다.
-            </p>
             
             {/* Newsletter Subscription */}
             <div className="mb-6">
-              <h4 className="text-white font-semibold mb-3 text-sm">뉴스레터 구독</h4>
+              <h4 className="text-white font-bold mb-3 text-base">뉴스레터 구독</h4>
               <form onSubmit={handleSubscribe} className="flex gap-2">
                 <input
                   type="email"
@@ -76,8 +73,8 @@ const Footer = () => {
           <div className="hidden lg:block flex-1"></div>
           
           {/* 주요 서비스 */}
-          <div className="flex-1">
-            <h4 className="font-semibold mb-6 text-white text-sm">주요 서비스</h4>
+          <div className="flex-1" style={{ marginBottom: '48px' }}>
+            <h4 className="font-bold mb-6 text-white text-base">주요 서비스</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
               <li>
                 <a href="/announcements" className="hover:text-white transition-colors">
@@ -111,8 +108,8 @@ const Footer = () => {
           <div className="hidden lg:block flex-[0.5]"></div>
 
           {/* 정책 & 제도 */}
-          <div className="flex-1">
-            <h4 className="font-semibold mb-6 text-white text-sm">정책 & 제도</h4>
+          <div className="flex-1" style={{ marginBottom: '48px' }}>
+            <h4 className="font-bold mb-6 text-white text-base">정책 & 제도</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
               <li>
                 <a href="/policy/guide" className="hover:text-white transition-colors">
@@ -147,7 +144,7 @@ const Footer = () => {
           
           {/* 연락처 정보 */}
           <div className="flex-1">
-            <h4 className="font-semibold mb-6 text-white text-sm">연락처</h4>
+            <h4 className="font-bold mb-6 text-white text-base">연락처</h4>
             <div className="text-gray-400 text-sm space-y-4">
               <div>
                 <div className="flex items-center gap-2 mb-1">
